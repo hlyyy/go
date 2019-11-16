@@ -25,7 +25,7 @@ func main () {
 	num:=1
 	dom.Find(".search-tab").Each(func(i int, selection *goquery.Selection){
 		selection.Find(".tit").Each(func(i int, title *goquery.Selection){
-			fmt.Println("%3d ",num)
+			fmt.Printf("%3d ",num)
 			fmt.Println(title.Text())
 			num++
 		})

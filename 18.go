@@ -45,7 +45,7 @@ func Verify (user User) bool {
 func Register(userInfo []byte) {
 	var user User
 	json.Unmarshal(userInfo,&user)
-	if !Existed(user) {
+	if Existed(user) {
 		status =Status{false,"用户已存在"}
 		return 
 	}

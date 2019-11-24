@@ -100,7 +100,7 @@ func LoginIn(userInfo []byte) {
 func Update_Password(userInfo []byte) {
 	var user Newuser
 	json.Unmarshal(userInfo,&user)
-	if !Verify1(user) {
+	if !Modify(user) {
 		status = Status{false,"用户名或旧密码错误"}
 		return
 	}
@@ -143,7 +143,7 @@ func update_password(res http.ResponseWriter, req *http.Request) {
 		if err != nil {
 			panic(err)
 		}
-		Modify(s)
+		Update_Password(s)
 		res.Write(Feedbook(status))
 	} else {
 		res.Write([]byte("{\"false\":\"只支持POST方式\"}"))
@@ -156,6 +156,7 @@ func Feedbook(a Status)[]byte {
 	s,err := json.Marshal(a)
 	if err != nil {
 		panic(err)
+	}
 	return s
 }
 

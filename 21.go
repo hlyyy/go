@@ -8,6 +8,7 @@ import (
 	_"github.com/jinzhu/gorm/dialects/mysql"
 )
 
+//定义全局变量db，连接数据库mysql
 var db,_ = gorm.Open("mysql","root:huanglingyun0130@/usersinfo?charset=utf8&parseTime=True&loc=Local")
 
 var status = Status{false,""}
@@ -34,6 +35,7 @@ type Newuser struct {
 func Existed(user User) bool {
 	var l User
 	res := db.Where("username= ? ",user.Username).Find(&l)
+	//判断用户数据是否被查找到
 	if res.RecordNotFound() {
 			return  false
 	}
@@ -55,10 +57,12 @@ func Modify (user Newuser) bool {
 	var l User
 	res := db.Where("username = ? AND password = ?",user.Username,user.Oldpassword).Find(&l)
 	if res.RecordNotFound() {
+		//将Newuser结构体中的信息转换到User中
 		l.Username = user.Username
 		l.Password = user.Oldpassword
 		return false
 	}
+	//更新
 	db.Model(&l).Where("username = ?",user.Username).Update("password",user.Newpassword)
 	return true
 }
@@ -79,7 +83,7 @@ func Register(userInfo []byte) {
 		status=Status{false,"密码为空"}
 		return
 	}
-	db.Create(&user)
+	db.Create(&user)//将用户信息储存到数据表中
 	status = Status{true,"注册成功"}
 }
 

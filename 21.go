@@ -76,11 +76,11 @@ func Register(userInfo []byte) {
 		return 
 	}
 	if user.Username == "" {
-		status=Status{false,"用户名为空"}
+		status = Status{false,"用户名为空"}
 		return
 	}
 	if user.Password == "" {
-		status=Status{false,"密码为空"}
+		status = Status{false,"密码为空"}
 		return
 	}
 	db.Create(&user)//将用户信息储存到数据表中

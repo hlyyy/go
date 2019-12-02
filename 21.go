@@ -9,7 +9,7 @@ import (
 )
 
 //定义全局变量db，连接数据库mysql
-var db,_ = gorm.Open("mysql","root:huanglingyun0130@/usersinfo?charset=utf8&parseTime=True&loc=Local")
+var db,_ = gorm.Open("mysql","root:@/usersinfo?charset=utf8&parseTime=True&loc=Local")
 
 var status = Status{false,""}
 

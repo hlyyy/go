@@ -24,10 +24,14 @@ func main() {
 	db.DB().SetMaxIdleConns(10)
 	db.DB().SetMaxOpenConns(100)
 	defer db.Close()
-	lable := Lable{Name:"Helen"}
-	db.Create(&lable)
+	//lable := Lable{Name:"Helen"}
+	//db.Create(&lable)
+	//db.Create(&Lable{Name:"huanglingyun"})
 	var l Lable
-	res := db.Where("name<>?","huang").Find(&l)
+	res := db.Where("name=?","Helen").Find(&l)
+	fmt.Println(l)
+	//db.Model(&Lable{}).Where(&Lable{Name:"Helen"}).Find(&l)
+	//fmt.Println(l)
 	if res.RecordNotFound() {
 		fmt.Println("Record Not Found")
 	} else {

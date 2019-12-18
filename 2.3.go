@@ -11,7 +11,7 @@ func main() {
 	router := gin.Default()
 	router.POST("/register",func(c *gin.Context){
 		var data RegisterPayload
-		//返回一个error类型的变量
+		//返回一个error类型的变量,不为nil则未绑定成功
 		if err := c.BindJSON(&data); err != nil {
 			c.JSON(400,gin.H{
 				"massage": "Bad Request",

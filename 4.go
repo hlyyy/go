@@ -16,6 +16,7 @@ func main() {
 		panic(err)
 	}
 	defer rp.Body.Close()
-	fmt.Println(string(body))
+	content := string(body)
+	fmt.Println(content)
 }
  

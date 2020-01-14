@@ -26,16 +26,8 @@ func main() {
 		}
 	}()
 
-//	go func() {
-//		time.Sleep(time.Second)
-//		ch <- i
-//		fmt.Println(i)
-//	}()
-
 	for {
 		i += 1
-//		fmt.Println("main:i=",i)
 		ch <- i
-	//	time.Sleep(time.Second)
 	}
 }

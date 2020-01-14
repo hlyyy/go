@@ -5,18 +5,17 @@ import(
 	"net/url"
 	"strings"
 	"io/ioutil"
-	"github.com/gopasspw/gopass"
 )
 func main() {
-	var name string
+	var name,password string
 	fmt.Print("输入账号:")
 	fmt.Scanln(&name)
 	fmt.Print("输入密码:")
-	password,_ :=gopass.GetPasswdMasked()
+	fmt.Scanln(&password)
 	requesturl :="https://accounts.douban.com/j/mobile/login/basic"
 	data :=url.Values{}
 	data.Set("name",name)
-	data.Set("password",string(password))
+	data.Set("password",password)
 	data.Set("remember","false")
 	data.Set("ticket","")
 	data.Set("ck","")

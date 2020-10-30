@@ -1,2 +1,2 @@
 # go
-## the practice of golang 
+the practice of golang 
